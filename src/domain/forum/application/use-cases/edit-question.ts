@@ -6,7 +6,7 @@ import { Question } from "../../enterprise/entities/question";
 import { QuestionAttachment } from "../../enterprise/entities/question-attachment";
 import { QuestionAttachmentList } from "../../enterprise/entities/question-attachment-list";
 import { IQuestionAttachmentsRepository } from "../repositories/question-attachments-repository";
-import { IQuestionsRepository } from "../repositories/questions-repository";
+import { QuestionsRepository } from "../repositories/questions-repository";
 
 interface EditQuestionUseCaseRequest {
   authorId: string;
@@ -25,7 +25,7 @@ type EditQuestionUseCaseResponse = Either<
 
 export class EditQuestionUseCase {
   constructor(
-    private questionsRepository: IQuestionsRepository,
+    private questionsRepository: QuestionsRepository,
     private questionAttachmentsRepository: IQuestionAttachmentsRepository
   ) {}
 

@@ -1,12 +1,12 @@
 import { PaginationParams } from "@/core/repositories/pagination-params";
-import { IQuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
+import { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
 import { Question } from "@/domain/forum/enterprise/entities/question";
 import { Injectable } from "@nestjs/common";
 import { PrismaQuestionMapper } from "../mappers/prisma-question-mapper";
 import { PrismaService } from "../prisma.service";
 
 @Injectable()
-export class PrismaQuestionsRepository implements IQuestionsRepository {
+export class PrismaQuestionsRepository implements QuestionsRepository {
   constructor(private prismaService: PrismaService) {}
 
   async findById(id: string): Promise<Question | null> {
