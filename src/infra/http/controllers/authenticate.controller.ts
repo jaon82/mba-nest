@@ -30,7 +30,7 @@ export class AuthenticateController {
     const { accessToken } = result.value;
 
     return {
-      access_token: accessToken,
+      accessToken: accessToken,
     };
   }
 }
