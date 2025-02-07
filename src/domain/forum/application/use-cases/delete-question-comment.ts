@@ -1,5 +1,6 @@
 import { Either, left, right } from "@/core/either";
-import { IQuestionCommentsRepository } from "@/domain/forum/application/repositories/question-comments-repository";
+import { QuestionCommentsRepository } from "@/domain/forum/application/repositories/question-comments-repository";
+import { Injectable } from "@nestjs/common";
 import { NotAllowedError } from "../../../../core/errors/not-allowed-error";
 import { ResourceNotFoundError } from "../../../../core/errors/resource-not-found-error";
 
@@ -13,10 +14,10 @@ type DeleteQuestionCommentUseCaseResponse = Either<
   object
 >;
 
+@Injectable()
 export class DeleteQuestionCommentUseCase {
-  constructor(
-    private questionCommentsRepository: IQuestionCommentsRepository
-  ) {}
+  constructor(private questionCommentsRepository: QuestionCommentsRepository) {}
+
   async execute({
     authorId,
     questionCommentId,
