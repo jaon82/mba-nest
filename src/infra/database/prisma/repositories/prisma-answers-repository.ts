@@ -1,12 +1,12 @@
 import { PaginationParams } from "@/core/repositories/pagination-params";
-import { IAnswersRepository } from "@/domain/forum/application/repositories/answers-repository";
+import { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository";
 import { Answer } from "@/domain/forum/enterprise/entities/answer";
 import { Injectable } from "@nestjs/common";
 import { PrismaAnswerMapper } from "../mappers/prisma-answer-mapper";
 import { PrismaService } from "../prisma.service";
 
 @Injectable()
-export class PrismaAnswersRepository implements IAnswersRepository {
+export class PrismaAnswersRepository implements AnswersRepository {
   constructor(private prisma: PrismaService) {}
 
   async findById(id: string): Promise<Answer | null> {
@@ -56,7 +56,7 @@ export class PrismaAnswersRepository implements IAnswersRepository {
   }
 
   async delete(answer: Answer): Promise<void> {
-    await this.prisma.question.delete({
+    await this.prisma.answer.delete({
       where: {
         id: answer.id.toString(),
       },
