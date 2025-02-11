@@ -30,6 +30,8 @@ describe("Upload attachment (E2E)", () => {
       .post("/attachments")
       .set("Authorization", `Bearer ${accessToken}`)
       .attach("file", "./test/e2e/sample-image.jpeg");
-    expect(response.statusCode).toBe(201);
+    expect(response.body).toEqual({
+      attachmentId: expect.any(String),
+    });
   });
 });
