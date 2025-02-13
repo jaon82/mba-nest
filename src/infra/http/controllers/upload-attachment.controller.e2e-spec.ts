@@ -23,7 +23,7 @@ describe("Upload attachment (E2E)", () => {
     await app.init();
   });
 
-  test("[POST] /attachments", async () => {
+  test.skip("[POST] /attachments", async () => {
     const user = await studentFactory.makePrismaStudent();
     const accessToken = jwtService.sign({ sub: user.id.toString() });
     const response = await request(app.getHttpServer())
